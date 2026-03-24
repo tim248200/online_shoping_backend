@@ -1,11 +1,17 @@
-class product{
+import java.util.HashMap;
+
+public abstract class Product {
     private int id;
     private String title;
     private int price;
 
-    public product(){}
+    private HashMap<String, String> categorys = new HashMap<>();
 
-    public product(int id, int price, String title){
+    abstract void callPrice();
+
+    public Product(){}
+
+    public Product(int id, int price, String title){
         this.id = id;
         this.title = title;
         this.price = 0;
