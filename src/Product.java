@@ -3,9 +3,7 @@ import java.util.HashMap;
 public abstract class Product {
     private int id;
     private String title;
-    private int price;
-
-    private HashMap<String, String> categorys = new HashMap<>();
+    protected int price;
 
     abstract void callPrice();
 
