@@ -37,4 +37,5 @@ public abstract class Product {
     public void setId(){
         this.id = id;
     }
+
 }
