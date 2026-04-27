@@ -1,13 +1,12 @@
-import java.util.HashMap;
-
 public abstract class Product {
     private int id;
     private String title;
-    protected int price;
+    private int price;
 
-    abstract void callPrice();
+    abstract void callPrice(double price);
+    abstract void showInfo();
 
-    public Product(){}
+    public Product(int id, String title, int price){}
 
     public Product(int id, int price, String title){
         this.id = id;

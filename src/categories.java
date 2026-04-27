@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class categories {
-    String name;
+    private String name;
     private HashMap<Integer, String> categories = new HashMap<>();
 
     public void addSubCategorie(int id, String name){
@@ -15,12 +15,14 @@ public class categories {
 
         System.out.println("количество категорий: ");
         for (Map.Entry<Integer, String> id : map.entrySet()){
+            System.out.println(categories);
             counter++;
         }
+
         return counter;
     }
 
     void showCategories(){
-
+        // TODO доделать функцию showCategories()
     }
 }
