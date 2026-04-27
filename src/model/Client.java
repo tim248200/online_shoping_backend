@@ -1,6 +1,8 @@
+package model;
+
 import java.util.Objects;
 
-public class Client extends Person{
+public class Client extends Person {
     private static int autoId = 0;
     private int id;
     private double wallet;

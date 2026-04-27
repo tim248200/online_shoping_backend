@@ -1,3 +1,5 @@
+package service;
+
 public interface payable {
     public double GetFinalPrice();
     void pay(int ammount);

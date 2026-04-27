@@ -1,9 +1,11 @@
-public class garden_items extends Product{
+package model;
+
+public class electronics extends Product {
     int id;
     String title;
     int price;
 
-    public garden_items(int id, int price, String title){
+    public electronics(int id, int price, String title){
         super(id, title, price);
         this.id = id;
         this.title = title;
