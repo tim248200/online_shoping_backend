@@ -1,24 +1,19 @@
 package model;
 
 public class garden_items extends Product {
-    int id;
-    String title;
-    int price;
-
-    public garden_items(int id, int price, String title){
+    public garden_items(int id, int price, String title) {
         super(id, title, price);
-        this.id = id;
-        this.title = title;
-        this.price = price;
     }
 
     @Override
-    void callPrice(double price) {
-
+    public void callPrice(double price) {
+        setPrice((int) price);
     }
 
     @Override
-    void showInfo() {
-        System.out.println("\nid: " + getId() + "\ntitle: " + getTitle() + "\nprice: " + getPrice());
+    public void showInfo() {
+        System.out.println("\n[Сад/Огород] id: " + getId() +
+                " | название: " + getTitle() +
+                " | цена: " + getPrice() + " руб.");
     }
 }
