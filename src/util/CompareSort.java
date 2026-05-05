@@ -30,6 +30,4 @@ public class CompareSort {
                 .sorted(strategy)
                 .collect(Collectors.toList());
     }
-
-    // TODO использовать сортировки в проекте
 }

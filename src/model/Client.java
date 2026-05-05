@@ -1,24 +1,17 @@
 package model;
 
-import java.util.Objects;
-
 public class Client extends Person {
-    private static int autoId = 0;
     private int id;
     private double wallet;
+    private double creditCount;
+    private double debitCount;
 
-    public Client(int id, String name, String surname, double wallet) {
+    public Client(String name, String surname, double wallet) {
         super(name, surname);
-        this.id = autoId++;
+        this.id = id++;
         this.wallet = wallet;
-    }
-
-    public double getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(double wallet) {
-        this.wallet = wallet;
+        this.creditCount = 0.0;
+        this.debitCount = 0.0;
     }
 
     public int getId() {
@@ -29,9 +22,27 @@ public class Client extends Person {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id, wallet);
+    public double getWallet() {
+        return wallet;
     }
 
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
+    }
+
+    public double getCreditCount() {
+        return creditCount;
+    }
+
+    public void setCreditCount(double creditCount) {
+        this.creditCount = creditCount;
+    }
+
+    public double getDebitCount() {
+        return debitCount;
+    }
+
+    public void setDebitCount(double debitCount) {
+        this.debitCount = debitCount;
+    }
 }

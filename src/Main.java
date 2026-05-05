@@ -1,38 +1,54 @@
 import model.*;
 import service.*;
-import util.*;
+import java.util.Scanner;
 import java.util.List;
+import util.CompareSort;
 
 public class Main {
     public static void main(String[] args) {
-        // Создаём товары
-        Product laptop = new electronics(1, 50000, "Ноутбук");
-        Product phone = new electronics(2, 30000, "Смартфон");
-        Product shovel = new garden_items(3, 1500, "Лопата");
-        Product seeds = new garden_items(4, 200, "Семена");
-
-        // Каталог
         catalogue catalog = new catalogue();
-        catalog.addProduct(laptop);
-        catalog.addProduct(phone);
-        catalog.addProduct(shovel);
-        catalog.addProduct(seeds);
+        catalog.addProduct(new electronics(1, 50000, "Ноутбук"));
+        catalog.addProduct(new electronics(2, 30000, "Смартфон"));
+        catalog.addProduct(new garden_items(3, 1500, "Лопата"));
+        catalog.addProduct(new garden_items(4, 200, "Семена"));
 
-        // Сортировка
         CompareSort sorter = new CompareSort();
-        List<Product> sortedByPrice = sorter.sortByPrice(catalog.getAllProducts());
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n=== Товары по убыванию цены ===");
-        sortedByPrice.forEach(Product::showInfo);
+        while (true) {
+            System.out.println("\nГлавное Меню:");
+            System.out.println("1. Показать все товары");
+            System.out.println("2. Отсортировать по цене по убыванию");
+            System.out.println("3. Фильтр: товары дороже 10 000");
+            System.out.println("0. Выход");
+            System.out.print("Выберите Пункт Меню: ");
 
-        // Фильтр по цене
-        List<Product> expensive = sorter.filterByPrice(catalog.getAllProducts(), 10000);
-        System.out.println("\n=== Товары дороже 10000 ===");
-        expensive.forEach(Product::showInfo);
+            int choice = scanner.nextInt();
 
-        // Клиент
-        Client client = new Client(1, "Иван", "Петров", 100000);
-        System.out.println("\nКлиент: " + client.getName() + " " + client.getSurname());
-        System.out.println("Баланс: " + client.getWallet());
+            if (choice == 0) {
+                System.out.println("Завершение работы...");
+                break;
+            }
+
+            switch (choice) {
+                case 1:
+                    System.out.println("\n=== Список товаров ===");
+                    catalog.getAllProducts().forEach(Product::showInfo);
+                    break;
+                case 2:
+                    System.out.println("\n=== Сортировка по цене ===");
+                    List<Product> sorted = sorter.sortByPrice(catalog.getAllProducts());
+                    sorted.forEach(Product::showInfo);
+                    break;
+                case 3:
+                    System.out.println("\n=== Дорогие товары ===");
+                    List<Product> expensive = sorter.filterByPrice(catalog.getAllProducts(), 10000);
+                    expensive.forEach(Product::showInfo);
+                    break;
+                default:
+                    System.out.println("Неверный ввод, попробуйте снова.");
+            }
+        }
+        scanner.close();
     }
 }
