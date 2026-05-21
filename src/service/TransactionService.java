@@ -1,10 +1,12 @@
 package service;
 
+import interfaces.TransactionInterface;
 import model.Client;
 
-public class TransactionService {
+public class TransactionService implements TransactionInterface {
 
     // Перевод с кошелька на дебетовый счет
+    @Override
     public void walletToDebit(Client client, double amount) {
         if (client.getWallet() >= amount) {
             client.setWallet(client.getWallet() - amount);
@@ -16,6 +18,7 @@ public class TransactionService {
     }
 
     // Перевод с дебетового счета на кошелек
+    @Override
     public void debitToWallet(Client client, double amount) {
         if (client.getDebitCount() >= amount) {
             client.setDebitCount(client.getDebitCount() - amount);
@@ -27,6 +30,7 @@ public class TransactionService {
     }
 
     // Погашение кредита из кошелька
+    @Override
     public void payOffCredit(Client client, double amount) {
         if (client.getWallet() >= amount) {
             client.setWallet(client.getWallet() - amount);

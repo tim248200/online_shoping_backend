@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Product {
+import java.util.Objects;
+
+public abstract class Product implements Comparable<Product> {
     private int id;
     private String title;
     private int price;
@@ -14,10 +16,24 @@ public abstract class Product {
         this.price = price;
     }
 
-    public Product(int id, String title) {
-        this.id = id;
-        this.title = title;
-        this.price = 0;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null || !(obj instanceof Product)) return false;
+
+        Product product = (Product) obj;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Product other) {
+        return Integer.compare(this.id, other.id);
     }
 
     public String getTitle() {

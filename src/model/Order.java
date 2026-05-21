@@ -1,7 +1,7 @@
 package model;
 
 import enums.Status;
-import service.payable;
+import interfaces.payable;
 
 import java.util.List;
 
@@ -38,6 +38,10 @@ public class Order implements payable {
     @Override
     public boolean isPaid() {
         return paid;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setStatus(Status status) {

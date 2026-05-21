@@ -1,9 +1,10 @@
 package service;
 
+import interfaces.PaymentInterface;
 import model.Client;
 import model.Product;
 
-    public class PaymentService {
+    public class PaymentService implements PaymentInterface {
 
         private final HistoryService historyService;
         private static final double CREDIT_LIMIT = -20000.0;
@@ -12,6 +13,7 @@ import model.Product;
             this.historyService = historyService;
         }
 
+        @Override
         public boolean payWithDebit(Client client, Product product) {
             if (client.getDebitCount() >= product.getPrice()) {
                 client.setDebitCount(client.getDebitCount() - product.getPrice());
@@ -20,6 +22,7 @@ import model.Product;
             return false;
         }
 
+        @Override
         public boolean payWithCredit(Client client, Product product) {
             if (client.getCreditCount() - product.getPrice() >= -100000) {
                 client.setCreditCount(client.getCreditCount() - product.getPrice());
@@ -28,6 +31,7 @@ import model.Product;
             return false;
         }
 
+        @Override
         public boolean payComplex(Client client, Product product) {
             double price = product.getPrice();
 
@@ -44,6 +48,7 @@ import model.Product;
             return false;
         }
 
+        @Override
         public void processPurchase(Client client, Product product) {
             double price = product.getPrice();
 

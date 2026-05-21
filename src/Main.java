@@ -1,4 +1,4 @@
-import service.*;
+import model.menu;
 
 public class Main {
     public static void main(String[] args) {

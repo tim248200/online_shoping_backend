@@ -6,5 +6,4 @@ public enum Status {
     NOT_READY,
     CANCELLED,
     PAID;
-    // TODO использовать статусы
 }
