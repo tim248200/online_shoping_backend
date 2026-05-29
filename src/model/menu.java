@@ -204,8 +204,6 @@ public class menu {
             }
         };
 
-
-
         paymentService.processPurchase(client, orderWrapper);
 
         client.setCart(new ShoppingCart());
